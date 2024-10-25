@@ -10,6 +10,7 @@ Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas 
 
   # Step 1: Ativando o subsistema do windows para linux.
      - Abra o painel de controle no windows.
+     <img src="searchBarUbuntu.png">
      - Vá em programas.
      - Clique em ativar e desativar recursos do windows.
      - Irá aparecer uma lista, procure "Subsistema do Windows para Linux".
