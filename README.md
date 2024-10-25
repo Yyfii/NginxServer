@@ -58,5 +58,6 @@ Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas 
   O status.sh gerará dois arquivos de saída:
   - online.sh - arquivo de serviço online.
   - offline.sh - arquivo de serviço offline.
+    
   Esse script será executado a cada 5 minutos, e a cada execução ele terá uma nova versão.(Ex: statusv1.sh)
 
