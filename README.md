@@ -10,7 +10,7 @@ Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas 
 
   # Step 1: Ativando o subsistema do windows para linux.
      - Abra o painel de controle no windows.
-     <img src="searchBarUbuntu.png">
+     
      - Vá em programas.
      - Clique em ativar e desativar recursos do windows.
      - Irá aparecer uma lista, procure "Subsistema do Windows para Linux".
@@ -25,6 +25,7 @@ Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas 
      - Procure a versão mais atual do Ubuntu LTS(Long Term Support).
      - Prossiga e Instale.
      - Vá no menu iniciar e ele irá aparecer.
+     <img width="40%" height="15%" src="searchBarUbuntu.png"/>
      - Clique nele.
      - Ao carregar ele irá pedir um nome de usuário.
      - E também pedirá uma senha. (*Tenha certeza de anotá-la em algum lugar seguro para não esquecê-la)
