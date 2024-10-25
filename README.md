@@ -52,3 +52,11 @@ Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas 
       - sudo systemctl reload nginx (recarregar  o serviço sem parar as conexões)
       - sudo systemctl disable nginx (desabilitar o serviço)
       - sudo systemctl enable nginx (habilitar o serviço)
+  # Step 6: Criando o script de validação
+  Iremos utilizar um shell script(irei chamá-lo de "status.sh"), com uma extensão .sh, esse script validará se o serviço está ativo ou não e enviaá o seu status para um diretório que iremos criar(irei chamá-lo de "StatusNginx").
+  O status.sh conterá Data e hora, nome do serviço,  status, uma mensagem personalizada indicando seu status( online ou offline).
+  O status.sh gerará dois arquivos de saída:
+  - online.sh - arquivo de serviço online.
+  - offline.sh - arquivo de serviço offline.
+  Esse script será executado a cada 5 minutos, e a cada execução ele terá uma nova versão.(Ex: statusv1.sh)
+
