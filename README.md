@@ -1,7 +1,7 @@
 # NginxServer
 <p> Colocando um servidor Nginx no ar, utilizando a WSL2 e Ubuntu 20.04 no Windows Subsystem for Linux e criação de script de status do serviço Nginx.</p>
 
-#:pencil: DOCUMENTAÇÃO 
+# :pencil:DOCUMENTAÇÃO 
 > Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas necessárias :point_down:
 >>`WSL2`
  `Ubuntu 20.04`
