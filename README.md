@@ -352,9 +352,11 @@ echo -e "$msg" >> /NginxStatus/status.log
 ```
 > ![parando nginx](https://github.com/user-attachments/assets/3149ee9a-9080-49e4-a9c1-e63ffb044077)
 
-> Como você pode perceber, ele agora está mostrando as notificações do nginx parado. Então está funcionando perfeitamente! 
 
-> Bom trabalho até aqui!:shipit:
+Como você pode perceber, ele agora está mostrando as notificações do nginx parado. Então está funcionando perfeitamente! :relaxed:
+
+Bom trabalho até aqui! :shipit:
+
 ## DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 `su root`: loga como usuario root.
