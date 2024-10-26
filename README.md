@@ -123,6 +123,13 @@ $> su root
 #> touch status.sh
 #> vi status.sh
 ```
+`su root`: loga como usuario root
+`cd`: significa change directory/mudar diretorio.
+`cd /`: entra no diretorio raiz
+`mkdir NginxStatus`: cria o diretorio/pasta NginxStatus, onde colocaremos nossos scripts.
+`cd NginxStatus`: entra no diretorio NginxStatus.
+`touch status.sh`: o touch cria um arquivo vazio, então ele está criando o arquivo status.sh
+`vi status.sh`: o vi é o editor, então ele vai abrir o arquivo status.sh com o editor de texto vi.
 
 > O editor vi funciona de modo geral em dois modos/estados: o estado de inserção e o estado de não inserção, quando você clicar em **ESC** ele entra no modo de não inserção, que é o modo emque você pode inserir comandos:
 
@@ -198,7 +205,7 @@ obs: se estiver como root não precisa do _-u ana_ detalhe ( ana é o nome do us
 ```
 >Ele vai perguntar qual editor você quer usar, neste tutorial estamos usando o vi/vim, mas fica a sua preferencia. Para mudar o editor após ter escolhido, use o comando `select-editor`,após escolher ele vai redirecionar para um arquivo, saia dele com o **:q!**.
 >
->Antes de prosserguirmos, tenha certeza de lembrar o caminho do seu arquivo status.sh. Para ter certeza do seu caminho, vá até o diretório raiz "cd / " e tente acessar o arquivo com esse mesmo  que você colocou, no caso da minha máquina "cat /NginxStatus/status.sh", se funcionar está correto, se não funcionar, não precisa se apavorar, na pasta em que você estiver dê um ls, e se a pasta NginxStatus aparecer, dê um "pwd", em seguida "cd NginxStatus/", dê outro "pwd", dê  um "ls", se o seu status.sh aparecer então o seu caminho correto é o resultado o"pwd"/status.sh -> resultado/status.sh.
+>Antes de prosserguirmos, tenha certeza de lembrar o caminho do seu arquivo status.sh. Para ter certeza do seu caminho, vá até o diretório raiz `cd / ` e tente acessar o arquivo com esse mesmo  que você colocou, no caso da minha máquina `cat /NginxStatus/status.sh`, se funcionar está correto, se não funcionar, não precisa se apavorar, na pasta em que você estiver dê um `ls`, e se a pasta NginxStatus aparecer, dê um `pwd`, em seguida `cd NginxStatus/`, dê outro `pwd`, dê  um `ls`, se o seu status.sh aparecer então o seu caminho correto é o resultado o `pwd/status.sh -> resultado/status.sh`.
 >
 ```
 #> crontab -e
@@ -218,9 +225,9 @@ obs: se estiver como root não precisa do _-u ana_ detalhe ( ana é o nome do us
 
 > Cada asterisco ( * * * * * ) -> (minutos horas diasDoMes Mes diaSemana) e devem ser separados por um espaço; o "( */1 * * * *) indica que a cada minuto ele fará alguma coisa, poderia ser um echo " running" por exemplo, mas no nosso caso ele executará um script a cada minuto(depois ajustaremos para cinco minutos como na proposta).
 
-> "/NginxStatus/status.sh " é o script que será executado a cada minuto.
+> `/NginxStatus/status.sh ` é o script que será executado a cada minuto.
 
-> ">> /NginxStatus/status.log" indica que o resultado da execução do script será concatenado/adicionado ao arquivo status.log.
+> ` >> /NginxStatus/status.log` indica que o resultado da execução do script será concatenado/adicionado ao arquivo status.log.
 
 > Então a cada minuto ele executará o script status.sh (que está verificando se o nginx está ativo ou não), e quando ele receber o resultado ele vai salvar o resultado em uma linha no arquivo status.log.
 
@@ -233,6 +240,8 @@ obs: se estiver como root não precisa do _-u ana_ detalhe ( ana é o nome do us
 ou
 #> tail -f status.log
 ```
+`tail -f status.log`: tail pega as últimas linhas de um arquivo e o -f indica para ele pegar em tempo real, então a cada execução do status.sh ele adiciona uma linha sobre o status do nginx no final do status.log, o tail vai pegando essas linhas em tempo real, então se você deixar esses comando rodando, vai conseguir ver que o processo está realmente funcionando.
+
 > ![status.log](https://github.com/user-attachments/assets/5982d1d0-23e2-43d1-8498-28882b5876e1)
 
 > Para parar o tail *Ctrl + z*
@@ -251,6 +260,8 @@ ou
 #> vi status.sh
 
 ```
+`export PATH=$PATH:/NginxStatus/:` : está adicionando o camiondo da pasta que criamos nossos scripts na variavel de caminhos globais PATH, assim poderemos acessar os scripts sem problema.
+
 >Modifique as linhas para:
 ```
  #!/bin/bash
@@ -263,6 +274,8 @@ else
 fi
 ~  
 ```
+`/NginxStatus/online.sh`: antes estavamos utilizando o `.` para executar os scripts, mas como adicionamos o caminho na PATH, não precisamos mais fazer isso.
+
 > ![nova versao status.log](https://github.com/user-attachments/assets/5d98e528-99bc-4c49-884a-741f9441e369)
 >
 ```
@@ -303,7 +316,32 @@ fi
 > Verficando e parando o nginx:
 > ![parando nginx](https://github.com/user-attachments/assets/3149ee9a-9080-49e4-a9c1-e63ffb044077)
 
+# DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
+`su root`: loga como usuario root.
+`cd`: significa change directory/mudar diretorio.
+`touch arquivo`: o touch cria um arquivo vazio, então ele vai criar o arquivo.
+`vi arquivo`: o vi é o editor, então ele vai abrir o arquivo com o editor de texto vi.
+`tail -f arquivo`: tail pega as últimas linhas de um arquivo e o -f indica para ele pegar em tempo real.
+` >> ` : concatena, redireciona or resultado de um comando por exemplo: pwd >> file.tx, ele pega o resultado do comando e concatena ao que já se encontra no arquivo file.txt, se fosse pwd > file.tx, ele não concatenaria, mas substituiria o conteudo pela saida do comando pwd.
+- `chmod +x arquivo`: vamos por partes, o `chmod` muda as permissões de acesso para arquivos ou diretórios, o `+x` faz com que o usuario dono do arquivo ou diretorio(ou seja quem o criou), o grupo do dono do aquivo e outros que não são o usuario dono ou não fazem parte do grupo do usuario dono posssam executar o arquivo, o `+` adiciona a permissão a todos e o `x` significa executar, em síntese, todos podem executar o arquivo ou diretorio.
+- `./script.sh` : o `./`, esse ponto antes do barra significa a ação de executar um script, então essa linha vai executar o script.sh.
+- `if `: inicia a condição,  e devem ser passados PARÂMETROS.
+- `[ $(systemctl | grep -i nginx | wc -l) -gt 0 ]` :
+- `[ conditions ]`" : local onde devem ser colocados os parâmetros/condições, sempre com um espaço antes e depois do colchete.
+- `$(comands)` : também pode ser subistituído por \`comands`, é usado para colocar comandos, como o ls. Exemplo: $(ls).
+- `systemctl` : Gerencia todos os serviços ativos e inativos.
+- ` | `: chamado de pipe, ele roteia o resultado do comando anterior a ele, no caso o systemctl , para o próximo comando.
+- ` grep -i nginx ` : o grep faz uma busca em todas as ocorrencias da palavra nginx, e o -i é usado pois o linux é case sensitive, ao usá-lo ele não vai se importar caso tenham ocorrencias da palavra com letras maiúsculas ou minúsculas. Em síntese ele ele vai buscar no resultado do systemctl(busca todos os serviços ativos) se o nginx aparece(se ele está ativo).
+- ` wc -l ` : conta as ocorrências da palavra nginx.
+- ` -gt 0 ` : pega o resultado dos comandos( a quantidade de ocorrencia) e pergunta se é gt(greater than/maior que) 0.
+- ` then ` : caso a condição seja satisfeita, ou seja, as ocorrências existirem, em outras palavras, o nginx estiver ativo.
+- ` echo _expressao_ ` : é como um print, ele vai chamar algum comando, palavra, string, variável, etc.
+- ` $(date) ` : como citado anteriormente o `$()` é usado para executar comandos, e neste caso ele está executando o comando date, que traz a hora e data.
+- ` : ` : é apenas o caractere dois pontos, apenas para melhorar o visual.
+- ` Nginx - Está rodando - ONLINE ` : o texto a ser exibido.
+- ` >> ` : esse símbolo pega a expressao do echo e redireciona para algum lugar, como por exemplo um arquivo.
+- ` /NginxStatus/status.log ` : o arquivo de log, onde as atualizações a cada 5 min serão enviadas.
 # REFERENCIAS
 ![Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
 ![Usando vi no Linux](https://receitasdecodigo.com.br/ubuntu/usando-vi-no-linux)
