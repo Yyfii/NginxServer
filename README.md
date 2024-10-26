@@ -316,7 +316,7 @@ fi
 > Verficando e parando o nginx:
 > ![parando nginx](https://github.com/user-attachments/assets/3149ee9a-9080-49e4-a9c1-e63ffb044077)
 
-# DESCRIÇÃO DOS PRINCIPAIS COMANDOS
+## DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 `su root`: loga como usuario root.
 
