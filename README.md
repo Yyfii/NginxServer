@@ -333,6 +333,7 @@ echo -e "$msg" >> /NginxStatus/status.log
 */1 * * * * /NginxStatus/status.sh >> /NginxStatus/status.log 2>&1
 ```
 > Salve e saia `:wq`
+
 > ![crontab last version](https://github.com/user-attachments/assets/5f896d0f-f11e-49ee-8bf4-c29c1d6592fc)
 
 > Agora verfificando se está rodando perfeitamente:
