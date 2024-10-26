@@ -3,16 +3,16 @@
 
 # :pencil:DOCUMENTAÇÃO 
 
-##[Step 1: Ativando o subsistema do windows para linux.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-1-ativando-o-subsistema-do-windows-para-linux)
-##[Step 2: Baixar o Ubuntu dentro da Windows Store.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-2-baixar-o-ubuntu-dentro-da-windows-store)
-##[Step 3: Instalando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-3-instalando-o-nginx)
-##[Step 4: Configurando o Firewall.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-4-configurando-o-firewall)
-##[Step 5: Verificando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-5-verificando-o-nginx)
-##[Step 6: Criando o script de validação](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
-##[Step 7: Automatização do script shell com o cron.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-7-automatiza%C3%A7%C3%A3o-do-script-shell-com-o-cron)
-##[Step 8: Redirecionando para duas saída (situações 1 - online 2 - offline)](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
-##[DESCRIÇÃO DOS PRINCIPAIS COMANDOS](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
-##[REFERENCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
+- - [Step 1: Ativando o subsistema do windows para linux.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-1-ativando-o-subsistema-do-windows-para-linux)
+- - [Step 2: Baixar o Ubuntu dentro da Windows Store.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-2-baixar-o-ubuntu-dentro-da-windows-store)
+- - [Step 3: Instalando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-3-instalando-o-nginx)
+- - [Step 4: Configurando o Firewall.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-4-configurando-o-firewall)
+- - [Step 5: Verificando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-5-verificando-o-nginx)
+- - [Step 6: Criando o script de validação](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
+- - [Step 7: Automatização do script shell com o cron.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-7-automatiza%C3%A7%C3%A3o-do-script-shell-com-o-cron)
+- - [Step 8: Redirecionando para duas saída (situações 1 - online 2 - offline)](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
+- - [DESCRIÇÃO DOS PRINCIPAIS COMANDOS](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
+- - [REFERENCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
 
 > Primeiramente iremos preparar o ambiente de trabalho, instalando as ferramentas necessárias :point_down:
 >>`WSL2`
