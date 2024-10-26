@@ -351,9 +351,11 @@ fi
 - ` >> ` : esse símbolo pega a expressao do echo e redireciona para algum lugar, como por exemplo um arquivo.
 - ` /NginxStatus/status.log ` : o arquivo de log, onde as atualizações a cada 5 min serão enviadas.
 # REFERENCIAS
-![Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
-![Usando vi no Linux](https://receitasdecodigo.com.br/ubuntu/usando-vi-no-linux)
-![Comando cron no Linux (agendamento de tarefas) [Guia Básico]](https://www.certificacaolinux.com.br/comando-linux-cron/)
+:pushpin: [Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
+
+:pushpin: [Usando vi no Linux](https://receitasdecodigo.com.br/ubuntu/usando-vi-no-linux)
+
+:pushpin: [Comando cron no Linux (agendamento de tarefas) [Guia Básico]](https://www.certificacaolinux.com.br/comando-linux-cron/)
 
 https://askubuntu.com/questions/541675/ufw-is-blocking-all-even-when-i-set-rules-to-allow
 https://www.howtouselinux.com/post/check-if-a-service-is-enabled-in-linux
