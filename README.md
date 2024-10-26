@@ -2,7 +2,7 @@
 <p> Colocando um servidor Nginx no ar, utilizando a WSL2 e Ubuntu 20.04 no Windows Subsystem for Linux e criação de script de status do serviço Nginx.</p>
 
 # :pencil:DOCUMENTAÇÃO 
-[Step 1: Ativando o subsistema do windows para linux.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-1-ativando-o-subsistema-do-windows-para-linux)
+>- [Step 1: Ativando o subsistema do windows para linux.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-1-ativando-o-subsistema-do-windows-para-linux)
 [Step 2: Baixar o Ubuntu dentro da Windows Store.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-2-baixar-o-ubuntu-dentro-da-windows-store)
 [Step 3: Instalando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-3-instalando-o-nginx)
 [Step 4: Configurando o Firewall.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-4-configurando-o-firewall)
