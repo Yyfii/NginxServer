@@ -12,10 +12,16 @@
 
   # Step 1: Ativando o subsistema do windows para linux.
      - Abra o painel de controle no windows.
-     
      - Vá em programas.
+     
+   ![painel de controle](https://github.com/Yyfii/NginxServer/blob/main/WhatsApp%20Image%202024-10-25%20at%2009.22.53.jpeg)
+   ![painel 2](https://github.com/Yyfii/NginxServer/blob/main/WhatsApp%20Image%202024-10-25%20at%2009.23.25.jpeg)
+
      - Clique em ativar e desativar recursos do windows.
      - Irá aparecer uma lista, procure "Subsistema do Windows para Linux".
+     
+   ![painel 3](https://github.com/Yyfii/NginxServer/blob/main/WhatsApp%20Image%202024-10-25%20at%2009.24.05.jpeg)
+   
      - Ative a opção.
      - Dê o OK e espere a instalação finalizar.
      - Reinicie seu dispositivo.
@@ -27,8 +33,8 @@
      - Procure a versão mais atual do Ubuntu LTS(Long Term Support).
      - Prossiga e Instale.
      - Vá no menu iniciar e ele irá aparecer.
-     - 
-     ![Painel Inicial](https://github.com/user-attachments/assets/81118493-3b19-473c-b864-7b281a339c79)
+   ![ubuntu](https://github.com/Yyfii/NginxServer/blob/main/search_ubuntu_iniciar.png)
+   ![ubuntu](https://github.com/Yyfii/NginxServer/blob/main/searchBarUbuntu.png)
 
      - Clique nele.
      - Ao carregar ele irá pedir um nome de usuário.
@@ -36,12 +42,25 @@
   # Step 3: Instalando o Nginx.
      - Antes de instalarmos qualquer coisa, iremos atualizar os pacotes.
      - Digite "sudo apt update && sudo apt upgrade".
+   ![update](https://github.com/Yyfii/NginxServer/blob/main/updatePackages.png)
+   
      - Se ele fizer alguma pergunta digite "y" para confirmar a instalação dos pacotes.
      - Agora digite "sudo apt install nginx"
      - Se ele fizer alguma pergunta digite "y" para confirmar a instalação dos pacotes.
+     
+   ![nginx install](https://github.com/Yyfii/NginxServer/blob/main/installNginx.png)
+
+> Resumo dos comandos:
+```sh
+#> sudo apt update && sudo apt upgrade
+#> sudo apt install nginx
+```
+   
   # Step 4: Configurando o Firewall.
      - Antes de testar, precisamos ter certeza de que o firewall não irá tentar impedir a ativação do nginx.
      - Listando as configurações das aplicações: "sudo ufw app list"
+   ![status ufw](https://github.com/Yyfii/NginxServer/blob/main/firewallStatus.png)
+   
        - Nginx Full ( Abre a porta 80 (tráfico web não criptografado) e 443 (TLS/SSL tráfico criptografado)
        - Nginx HTTP ( Abre apenas a porta 80)
        - Nginx HTTPS (Abre apenas a porta 443)
@@ -49,8 +68,21 @@
     - Digite "sudo ufw allow 'Nginx HTTP'
     - Digite "sudo ufw disable" e em seguida "sudo ufw enable" para reiniciar o firewall.
     - Verfique o status: "sudo ufw status"
+  ![status ufw](https://github.com/Yyfii/NginxServer/blob/main/firewallConfig.png)
+
+> Resumo dos comandos:
+```sh
+#> sudo ufw app list
+#> sudo ufw allow 'Nginx HTTP'
+#> sudo ufw disable
+#> sudo ufw enable
+#> sudo ufw status
+```
   # Step 5: Verificando o Nginx.
     - Podemos checar se ele está rodando com o comando "systemctl status nginx"
+    
+ ![nginx status](https://github.com/Yyfii/NginxServer/blob/main/statusNginxpt1.png)
+ 
     - - Comandos usados no nginx:
       - sudo systemctl stop nginx (para o serviço)
       - sudo systemctl systemctl start nginx (inicia o serviço)
@@ -58,6 +90,11 @@
       - sudo systemctl reload nginx (recarregar  o serviço sem parar as conexões)
       - sudo systemctl disable nginx (desabilitar o serviço)
       - sudo systemctl enable nginx (habilitar o serviço)
+
+> Resumo dos comandos:
+```sh
+#> systemctl status nginx
+```
   # Step 6: Criando o script de validação
   
   > Iremos utilizar um shell script(irei chamá-lo de "status.sh"), com uma extensão .sh, esse script validará se o serviço está ativo ou não e enviaá o seu status para um diretório que iremos criar(irei chamá-lo de "StatusNginx").
@@ -65,9 +102,9 @@
   O status.sh gerará dois arquivos de saída:
   - online.sh - arquivo de serviço online.
   - offline.sh - arquivo de serviço offline.
-  Esse script será executado a cada 5 minutos, e a cada execução ele terá uma nova versão.(Ex: statusv1.sh)
+  > Esse script será executado a cada 5 minutos, e a cada execução ele terá uma nova versão.(Ex: statusv1.sh)
   
-  `História do script`: Se o nginx aparecer quando pesquisarmos todos os serviços ativos do sistema -> ele está rodando, e iremos executar o script online.sh e mandar a execfução para o arquivo de log para que possa servir como um histórico de todas as execuções. Se ele não aparecer, será executado o arquivo offline.sh e mandado a ocorrencia para o arquivo de log, o status.log.
+  `História do script`: Se o nginx aparecer quando pesquisarmos todos os serviços ativos do sistema -> ele está rodando, e iremos executar o script online.sh e mandar a execução para o arquivo de log para que possa servir como um histórico de todas as execuções. Se ele não aparecer, será executado o arquivo offline.sh e mandado a ocorrencia para o arquivo de log, o status.log.
   
   Primeiramente iremos criar um diretorio:
   - Logue como root "su root"
@@ -77,16 +114,29 @@
   - Criar o script "touch status.sh"
   - Editar o script "vi status.sh"
 
-    > O editor vi funciona de modo geral em dois modos/estados: o estado de inserção e o estado de não inserção, quando você clicar em **ESC** ele entra no modo de não inserção, que é o modo emque vocÊ pode inserir comandos:
-    > alguns comandos mais usados (Esc + comando):
-    > - -i (inserir, ele abre o modo de inserção onde cursor está no momentos.)
-    > - -A (inserir, ele abre o modo de inserção no final da linha em que o cursor se encontra)
-    > - -dd (Deleta a linha em que o cursor se encontra)
-    > - -x (Deleta a letra que está na frente do cursor)
-    > - :w (salva)
-    > - :q! (força a saída)
-    > - :wq (salva e sai)
-    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc.
+> Resumo dos comandos:
+```sh
+$> su root
+#> cd /
+#> mkdir NginxStatus
+#> cd NginxStatus
+#> touch status.sh
+#> vi status.sh
+```
+
+> O editor vi funciona de modo geral em dois modos/estados: o estado de inserção e o estado de não inserção, quando você clicar em **ESC** ele entra no modo de não inserção, que é o modo emque você pode inserir comandos:
+
+> alguns comandos mais usados (Esc + comando):
+> 
+    - -i (inserir, ele abre o modo de inserção onde cursor está no momentos.)
+    -  -A (inserir, ele abre o modo de inserção no final da linha em que o cursor se encontra)
+    -  -dd (Deleta a linha em que o cursor se encontra)
+    - -x (Deleta a letra que está na frente do cursor)
+    - :w (salva)
+    - :q! (força a saída)
+    -  :wq (salva e sai)
+>
+    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc. Estarei deixando um vídeo para auxiliar no uso do vi, na seção das [referencias](https://github.com/Yyfii/NginxServer/tree/main?tab=readme-ov-file#referencias)
 
   ``` sh
   #!/bin/bash 
@@ -99,25 +149,26 @@
   fi
   ``` 
 `descrição`:
-- #!/bin/bash **todo script shell deve iniciar com essa linha, pois indicar o shell que estará executando esse script, no caso o Bash **
+- `#!/bin/bash` **todo script shell deve iniciar com essa linha, pois indicar o shell que estará executando esse script, no caso o Bash **
 - Fica extra atento até mesmo para os espaços! o shell script é muito sensível a isso! *principalmento nos antes e depois dos colchetes no if.
-- Vamos lá! No código estamos utilizando uma estrutura condicional if else fi:
-  -  if : inicia a condição,  e devem ser passados PARÂMETROS.
-  -   [ $(systemctl | grep -i nginx | wc -l) -gt 0 ] :
-     - "[ conditions ]" : local onde devem ser colocados os parâmetros/condições, sempre com um espaço antes e depois do colchete.
-     - "$(comands)" : também pode ser subistituído por \`comands`, é usado para colocar comandos, como o ls. Exemplo: $(ls).
-     - "systemctl" : Gerencia todos os serviços ativos e inativos.
-     - " | ": chamado de pipe, ele roteia o resultado do comando anterior a ele, no caso o systemctl , para o próximo comando.
-     - " grep -i nginx " : o grep faz uma busca em todas as ocorrencias da palavra nginx, e o -i é usado pois o linux é case sensitive, ao usá-lo ele não vai se importar caso tenham ocorrencias da palavra com letras maiúsculas ou minúsculas. Em síntese ele ele vai buscar no resultado do systemctl(busca todos os serviços ativos) se o nginx aparece(se ele está ativo).
-     - " wc -l " : conta as ocorrências da palavra nginx.
-     - " -gt 0 " : pega o resultado dos comandos( a quantidade de ocorrencia) e pergunta se é gt(greater than/maior que) 0.
-     - " then " : caso a condição seja satisfeita, ou seja, as ocorrências existirem, em outras palavras, o nginx estiver ativo.
-     - " echo _expressao_ " : é como um print, ele vai chamar algum comando, palavra, string, variável, etc.
-     - " $(date) " : como citado anteriormente o "$()" é usado para executar comandos, e neste caso ele está executando o comando date, que traz a hora e data.
-     - " : " : é apenas o caractere dois pontos, apenas para melhorar o visual.
-     - " Nginx - Está rodando - ONLINE " : o texto.
-     - " >> " : esse símbolo pega a expressao do echo e redireciona para algum lugar, como por exemplo um arquivo.
-     - " /NginxStatus/status.log " : o arquivo de log, onde as atualizações a cada 5 min serão enviadas.
+  > Vamos lá! No código estamos utilizando uma estrutura condicional if else fi:
+  
+  - `if `: inicia a condição,  e devem ser passados PARÂMETROS.
+  -   `[ $(systemctl | grep -i nginx | wc -l) -gt 0 ]` :
+     - `[ conditions ]`" : local onde devem ser colocados os parâmetros/condições, sempre com um espaço antes e depois do colchete.
+     - `$(comands)` : também pode ser subistituído por \`comands`, é usado para colocar comandos, como o ls. Exemplo: $(ls).
+     - `systemctl` : Gerencia todos os serviços ativos e inativos.
+     - ` | `: chamado de pipe, ele roteia o resultado do comando anterior a ele, no caso o systemctl , para o próximo comando.
+     - ` grep -i nginx ` : o grep faz uma busca em todas as ocorrencias da palavra nginx, e o -i é usado pois o linux é case sensitive, ao usá-lo ele não vai se importar caso tenham ocorrencias da palavra com letras maiúsculas ou minúsculas. Em síntese ele ele vai buscar no resultado do systemctl(busca todos os serviços ativos) se o nginx aparece(se ele está ativo).
+     - ` wc -l ` : conta as ocorrências da palavra nginx.
+     - ` -gt 0 ` : pega o resultado dos comandos( a quantidade de ocorrencia) e pergunta se é gt(greater than/maior que) 0.
+     - ` then ` : caso a condição seja satisfeita, ou seja, as ocorrências existirem, em outras palavras, o nginx estiver ativo.
+     - ` echo _expressao_ ` : é como um print, ele vai chamar algum comando, palavra, string, variável, etc.
+     - ` $(date) ` : como citado anteriormente o `$()` é usado para executar comandos, e neste caso ele está executando o comando date, que traz a hora e data.
+     - ` : ` : é apenas o caractere dois pontos, apenas para melhorar o visual.
+     - ` Nginx - Está rodando - ONLINE ` : o texto a ser exibido.
+     - ` >> ` : esse símbolo pega a expressao do echo e redireciona para algum lugar, como por exemplo um arquivo.
+     - ` /NginxStatus/status.log ` : o arquivo de log, onde as atualizações a cada 5 min serão enviadas.
 
 > Agora para salvar **ESC + :wq**
 > Para ver se ele está funcionando:
@@ -126,16 +177,21 @@
 #> cd /
 #> chmod +x /NginxStatus/status.sh
 #> chmod +x /NginxStatus/status.log
-#> ./NginxStatus/status.sh
+#> /NginxStatus/status.sh
 #> ./NginxStatus/status.log
 ```
+- `ls`: lista todos os arquivos e diretorios do caminho atual (menos os ocultos, p/isso use ls -a).
+- `cd /`: cd(change directory/mudar diretorio) ele muda o diretório para o /, que é o diretorio raiz onde o /home, /etc e outros diretorios principais ficam.
+- `chmod +x /NginxStatus/status.sh`: vamos por partes, o `chmod` muda as permissões de acesso para arquivos ou diretórios, o `+x` faz com que o usuario dono do arquivo ou diretorio(ou seja quem o criou), o grupo do dono do aquivo e outros que não são o usuario dono ou não fazem parte do grupo do usuario dono posssam executar o arquivo, o `+` adiciona a permissão a todos e o `x` significa executar, em síntese, todos podem executar o arquivo, que arquivo? o `/NginxStatus/status.sh`.
+- `./NginxStatus/status.sh` : o `./`, esse ponto antes do barra significa a ação de executar um script, então essa linha vai executar o status.sh.
+  
 > Você verá que no status.sh não retorna nada, por que ele está redirecionado para o status.log, que traz um resultado.
 > Por aqui já está bom, faremos umas modificações mais adiante, mas por agora seguiremos para outra etapa.
 
 # Step 7: Automatização do script shell com o cron.
 > O cron no linux provê um serviço de agendamento de tarefas para usuários do sistema, é um processo simples.
 
-obs: se estiver como root não precisa do _-u ana_ detalhe, ana é o nome do usuario)
+obs: se estiver como root não precisa do _-u ana_ detalhe ( ana é o nome do usuario)
 ```
 #> cd /
 #> crontab -u ana -e
@@ -151,16 +207,16 @@ obs: se estiver como root não precisa do _-u ana_ detalhe, ana é o nome do usu
 
 ![cron vazio](https://github.com/user-attachments/assets/97707d9c-ccc2-495b-9f43-6153067e3150)
 
-> Agora iremos adicionar uma linha, depois de todos esses comentário. **precisa de uma linha vazia após o comando,pois senão ele não roda"
+> Agora iremos adicionar uma linha, depois de todos esses comentário. **precisa de uma linha vazia após o comando,pois senão ele não roda**
 ``` sh
 */1 * * * * /NginxStatus/status.sh >> /NginxStatus/status.log
 
 ```
 >![cron after edit](https://github.com/user-attachments/assets/94c8640e-4119-444e-a02a-f8603774fd80)
 
-> Vamos entender o que a linha significa!
+> Vamos entender o que a linha significa! caso queia mais detalhes, deixei um link nas :point_right: [referencias](https://www.certificacaolinux.com.br/comando-linux-cron/) sobre o cron.
 
-> Cada asterisco ( * * * * * ) -> (minutos horas diasDoMes Mes diaSemana) e devem ser separados por um espaço; o "( */1 * * * *) indica que a cada minuto ele fará alguma coisa, poderia ser um echo " running" por exemplo, mas nop nosso caso ele executará um script a cada minuto(depois ajustaremos para cinco minutos como na proposta).
+> Cada asterisco ( * * * * * ) -> (minutos horas diasDoMes Mes diaSemana) e devem ser separados por um espaço; o "( */1 * * * *) indica que a cada minuto ele fará alguma coisa, poderia ser um echo " running" por exemplo, mas no nosso caso ele executará um script a cada minuto(depois ajustaremos para cinco minutos como na proposta).
 
 > "/NginxStatus/status.sh " é o script que será executado a cada minuto.
 
@@ -249,6 +305,10 @@ fi
 
 
 # REFERENCIAS
+![Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
+![Usando vi no Linux](https://receitasdecodigo.com.br/ubuntu/usando-vi-no-linux)
+![Comando cron no Linux (agendamento de tarefas) [Guia Básico]](https://www.certificacaolinux.com.br/comando-linux-cron/)
+
 https://askubuntu.com/questions/541675/ufw-is-blocking-all-even-when-i-set-rules-to-allow
 https://www.howtouselinux.com/post/check-if-a-service-is-enabled-in-linux
 https://www.baeldung.com/linux/crontab-editor
