@@ -398,12 +398,16 @@ Bom trabalho até aqui! :shipit:
 
 :pushpin: [Comando cron no Linux (agendamento de tarefas) [Guia Básico]](https://www.certificacaolinux.com.br/comando-linux-cron/)
 
-https://askubuntu.com/questions/541675/ufw-is-blocking-all-even-when-i-set-rules-to-allow
-https://www.howtouselinux.com/post/check-if-a-service-is-enabled-in-linux
-https://www.baeldung.com/linux/crontab-editor
-https://www.certificacaolinux.com.br/comando-linux-cron/
-https://www.cyberciti.biz/faq/systemd-systemctl-view-status-of-a-service-on-linux/
-https://gist.github.com/rxaviers/7360908
-https://github.com/gui-lirasilva/Edige-POO/blob/master/README.md
-https://dev.to/sabrinabarros/o-que-e-markdown-e-como-ele-pode-melhorar-o-seu-readme-no-github-2n2l
-https://www.alura.com.br/artigos/escrever-bom-readme
+:pushpin: [UFW is blocking all even when I set rules to allow](https://askubuntu.com/questions/541675/ufw-is-blocking-all-even-when-i-set-rules-to-allow)
+
+:pushpin: [Top 3 ways to check if a service is enabled in Linux](https://www.howtouselinux.com/post/check-if-a-service-is-enabled-in-linux)
+
+:pushpin: [Specify an Editor for Crontab](https://www.baeldung.com/linux/crontab-editor)
+
+
+:pushpin: [How to view status of a service on Linux using systemctl](https://www.cyberciti.biz/faq/systemd-systemctl-view-status-of-a-service-on-linux/)
+
+:pushpin: [Complete list of github markdown emoji markup](https://gist.github.com/rxaviers/7360908)
+
+:pushpin: [WSL 2 - Instalando Ubuntu 20.04 no Windows 10 com Windows Subsystem for Linux
+](https://www.youtube.com/watch?v=_Wp2nWtTBBY)
