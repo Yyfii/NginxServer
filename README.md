@@ -248,7 +248,7 @@ ou
 
 # Step 8: Redirecionando para duas saída (situações 1 - online 2 - offline)
 
-> Agora iremos criar dois arquivos, e ao invés dele criar um echo pra cada situação, ele vai executar um script para cada situação. E caso queria relembrar algum comando, visite a nossa [seção de descrição dos comandos](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
+> Agora iremos criar dois arquivos, e ao invés dele criar um echo pra cada situação, ele vai executar um script para cada situação. E caso queira relembrar algum comando, visite a nossa [seção de descrição dos comandos](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
 
 ```
 #> cd /
@@ -274,31 +274,60 @@ else
 fi
 ~  
 ```
+> Assim, ao invés dele fazer um echo dizendo que o servidor está ativo, ele vai redirecionar para um outro script `online.sh` e nesse script terá uma mensagem de ativo que será enviada para o status.log, e enfim ao usarmos o tail -f status.log, poderemos ver se o nginx está ativo ou não.
 `/NginxStatus/online.sh`: antes estavamos utilizando o `.` para executar os scripts, mas como adicionamos o caminho na PATH, não precisamos mais fazer isso.
 
 > ![nova versao status.log](https://github.com/user-attachments/assets/5d98e528-99bc-4c49-884a-741f9441e369)
->
+
+> Agora editaremos o arquivo `online.sh` com o vi.
 ```
 #> cd /
 #> cd NginxStatus/
 #> vi online.sh
 ```
+> e digite o seguinte código, com atenção aos espaços(não devem haver espaços antes e depois do espaço em `msg=`).
+```
+#!/bin/bash
+
+msg="Data: $(date) \nServiço: Nginx \nONLINE -  Rodando perfeitamente, fique tranquile (o..o) $(whoami)"
+echo -e "$msg" >> /NginxStatus/status.log
+```
 > ![online](https://github.com/user-attachments/assets/a34a94bd-c203-4af8-b5f8-77f4ac9708f0)
 
-> Salve e:
+> Salve o arquivo `:wq` e agora entre no arquivo offline.sh ou você pode simplesmente fazer uma cópia do online.sh e colocar no offline.sh
+```
+cp online.sh offline.sh
+```
+> Agora entre no arquivo e faça as mudanças necessárias(apenas a mensagem), você pode modificar da forma que deseja.
 ```
 #> vi offline.sh
 ```
+> e digite:
+```
+#!/bin/bash
+
+msg="Data: $(date) \nServiço: Nginx \nOFFLINE -  Sono Profundo, ( - . -)  $(whoami)"
+echo -e "$msg" >> /NginxStatus/status.log
+```
 > ![offline](https://github.com/user-attachments/assets/75ca6286-8b55-4008-968f-7f6d75de0ed7)
 
-> E agora o crontab:
+> E agora, entre no crontab:
 ```
 #> cd /
 #> crontab -e
 ```
+> E edite a linha para:
+```
+*/1 * * * * /NginxStatus/status.sh >> /NginxStatus/status.log 2>&1
+```
+> Salve e saia `:wq`
 > ![crontab last version](https://github.com/user-attachments/assets/5f896d0f-f11e-49ee-8bf4-c29c1d6592fc)
 
 > Agora verfificando se está rodando perfeitamente:
+```
+#> sudo systemctl restart nginx
+#> tail -f status.log
+```
 >  ![verificacao](https://github.com/user-attachments/assets/3e16548b-091d-40c5-86d1-8a54a05bd0b3)
 
 > Se você quiser usar esses comandos em qualquer lugar do sistema:
@@ -311,11 +340,21 @@ fi
 #>  status.log
 ``` 
 > última mudança depois de checar se tudo está ok, mudando o tempo para 5 minutos:
+```
+*/5 * * * * /NginxStatus/status.sh >> /NginxStatus/status.log 2>&1
+```
 > ![mudando5](https://github.com/user-attachments/assets/c7bde43f-fc13-4c8b-b382-591620c62279)
 
 > Verficando e parando o nginx:
+```
+#> sudo systemctl stop nginx
+#> tail -f NginxStatus/status.log
+```
 > ![parando nginx](https://github.com/user-attachments/assets/3149ee9a-9080-49e4-a9c1-e63ffb044077)
 
+> Como você pode perceber, ele agora está mostrando as notificações do nginx parado. Então está funcionando perfeitamente! 
+
+> Bom trabalho até aqui!:shipit:
 ## DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 `su root`: loga como usuario root.
