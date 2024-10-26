@@ -370,6 +370,8 @@ Como você pode perceber, ele agora está mostrando as notificações do nginx p
 
 Bom trabalho até aqui! :shipit:
 
+Se por acaso algum desses passos não funcionou para você, estou deixando todos os links que utilizei e que você pode utilizar seja para instalar o Ubuntu até os comandos utilizados!
+
 ## DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 - `su root`: loga como usuario root.
