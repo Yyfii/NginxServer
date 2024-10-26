@@ -248,7 +248,7 @@ ou
 
 # Step 8: Redirecionando para duas saída (situações 1 - online 2 - offline)
 
-> Agora iremos criar dois arquivos, e ao invés dele criar um echo pra cada situação, ele vai executar um script para cada situação.
+> Agora iremos criar dois arquivos, e ao invés dele criar um echo pra cada situação, ele vai executar um script para cada situação. E caso queria relembrar algum comando, visite a nossa [seção de descrição dos comandos](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
 
 ```
 #> cd /
@@ -319,13 +319,21 @@ fi
 # DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 `su root`: loga como usuario root.
+
 `cd`: significa change directory/mudar diretorio.
+
 `touch arquivo`: o touch cria um arquivo vazio, então ele vai criar o arquivo.
+
 `vi arquivo`: o vi é o editor, então ele vai abrir o arquivo com o editor de texto vi.
+
 `tail -f arquivo`: tail pega as últimas linhas de um arquivo e o -f indica para ele pegar em tempo real.
+
 ` >> ` : concatena, redireciona or resultado de um comando por exemplo: pwd >> file.tx, ele pega o resultado do comando e concatena ao que já se encontra no arquivo file.txt, se fosse pwd > file.tx, ele não concatenaria, mas substituiria o conteudo pela saida do comando pwd.
+
 - `chmod +x arquivo`: vamos por partes, o `chmod` muda as permissões de acesso para arquivos ou diretórios, o `+x` faz com que o usuario dono do arquivo ou diretorio(ou seja quem o criou), o grupo do dono do aquivo e outros que não são o usuario dono ou não fazem parte do grupo do usuario dono posssam executar o arquivo, o `+` adiciona a permissão a todos e o `x` significa executar, em síntese, todos podem executar o arquivo ou diretorio.
+  
 - `./script.sh` : o `./`, esse ponto antes do barra significa a ação de executar um script, então essa linha vai executar o script.sh.
+  
 - `if `: inicia a condição,  e devem ser passados PARÂMETROS.
 - `[ $(systemctl | grep -i nginx | wc -l) -gt 0 ]` :
 - `[ conditions ]`" : local onde devem ser colocados os parâmetros/condições, sempre com um espaço antes e depois do colchete.
