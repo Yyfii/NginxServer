@@ -8,9 +8,10 @@
  - [Step 3: Instalando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-3-instalando-o-nginx)
  - [Step 4: Configurando o Firewall.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-4-configurando-o-firewall)
  - [Step 5: Verificando o Nginx.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-5-verificando-o-nginx)
- - [Step 6: Criando o script de validação](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
+ - [Step 6: Criando o script de validação.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
  - [Step 7: Automatização do script shell com o cron.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-7-automatiza%C3%A7%C3%A3o-do-script-shell-com-o-cron)
  - [Step 8: Redirecionando para duas saídas (situações 1 - online 2 - offline)](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
+ - [Step 9: Colocando o versão do script na mensagem.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
  - [DESCRIÇÃO DOS PRINCIPAIS COMANDOS](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
  - [REFERÊNCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
 
@@ -365,6 +366,19 @@ echo -e "$msg" >> /NginxStatus/status.log
 ```
 > ![parando nginx](https://github.com/user-attachments/assets/3149ee9a-9080-49e4-a9c1-e63ffb044077)
 
+  # Step 9: Colocando o versão do script na mensagem.
+
+  > Vamos adicionar ao nosso script status.sh um código que gere a versão do script atual, e a cada vez que o script é executado, uma nova versão é criada.
+
+![novo status](https://github.com/user-attachments/assets/977349b3-b75e-4030-8b34-451c8ad1b442)
+
+![online](https://github.com/user-attachments/assets/12c97344-91b9-47ee-8ad1-3a83d2b55591)
+
+![offline](https://github.com/user-attachments/assets/b062ee2e-e9b1-4d68-ae9b-837499ac4b74)
+
+![Resultado](https://github.com/user-attachments/assets/725bb2ea-6a8e-47c3-b2e7-28a907373cde)
+
+***
 
 Como você pode perceber, ele agora está mostrando as notificações do nginx parado. Então está funcionando perfeitamente! :relaxed:
 
