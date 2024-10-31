@@ -11,7 +11,7 @@
  - [Step 6: Criando o script de validação.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
  - [Step 7: Automatização do script shell com o cron.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-7-automatiza%C3%A7%C3%A3o-do-script-shell-com-o-cron)
  - [Step 8: Redirecionando para duas saídas (situações 1 - online 2 - offline)](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
- - [Step 9: Colocando o versão do script na mensagem.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-8-redirecionando-para-duas-sa%C3%ADda-situa%C3%A7%C3%B5es-1---online-2---offline)
+ - [Step 9: Colocando o versão do script na mensagem.](https://github.com/Yyfii/NginxServer/blob/main/README.md#step-9-colocando-o-vers%C3%A3o-do-script-na-mensagem)
  - [DESCRIÇÃO DOS PRINCIPAIS COMANDOS](https://github.com/Yyfii/NginxServer/blob/main/README.md#descri%C3%A7%C3%A3o-dos-principais-comandos)
  - [REFERÊNCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
 
@@ -368,7 +368,34 @@ echo -e "$msg" >> /NginxStatus/status.log
 
   # Step 9: Colocando o versão do script na mensagem.
 
-  > Vamos adicionar ao nosso script status.sh um código que gere a versão do script atual, e a cada vez que o script é executado, uma nova versão é criada.
+  > Vamos adicionar ao nosso script status.sh um código que gere a versão do script atual, e a cada vez que o script é executado, uma nova versão é criada. Exemplo: versão 1, 2 etc.
+
+```
+#!/bin/bash
+
+VERSION_FILE="/NginxStatus/version.txt"
+
+if [ ! -f "$VERSION_FILE" ]; then
+            echo "1" > "$VERSION_FILE"
+fi
+
+VERSION=$(cat "$VERSION_FILE")
+
+NEW_VERSION=$((VERSION + 1))
+
+echo "$NEW_VERSION" > "$VERSION_FILE"
+
+echo "Versão atual do script: $VERSION"
+
+if [ $(systemctl | grep -i nginx | wc -l) -gt 0 ]
+
+then
+        /NginxStatus/online.sh
+
+else
+        /NginxStatus/offline.sh
+fi
+```
 
 ![novo status](https://github.com/user-attachments/assets/977349b3-b75e-4030-8b34-451c8ad1b442)
 
