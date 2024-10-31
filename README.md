@@ -439,7 +439,39 @@ fi
 ```
 ![novo status](https://github.com/user-attachments/assets/977349b3-b75e-4030-8b34-451c8ad1b442)
 
+> Agora iremos editar o arquivo online.sh, para que a versão seja mostrada na mensagem de status:
+
+- Iremos adicionar após o ` #!/bin/bash`: `VERSION=$(cat /NginxStatus/version.txt)`
+- E após o $(date) na variável msg, `\nVersao: $VERSION`
+
+O código ficará da seguinte forma:
+```
+#!/bin/bash
+
+VERSION=$(cat /NginxStatus/version.txt)
+
+msg="Data: $(date) \nVersao: $VERSION \nServiço: Nginx \nONLINE -  Rodando perfeitamente, fique tranquile (o..o) $(whoami)"
+echo -e "$msg" >> /NginxStatus/status.log
+```
+
+> Por fim devemos editar o offline.sh, faça o mesmo processo:
+
+- Iremos adicionar após o ` #!/bin/bash`: `VERSION=$(cat /NginxStatus/version.txt)`
+- E após o $(date) na variável msg, `\nVersao: $VERSION`
+
+O código ficará da seguinte forma:
+```
+#!/bin/bash
+
+VERSION=$(cat /NginxStatus/version.txt)
+
+msg="Data: $(date) \nVersao: $VERSION \nServiço: Nginx \nOFFLINE -  Sono Profundo, ( - . -)  $(whoami)"
+echo -e "$msg" >> /NginxStatus/status.log
+```
+
 ![online](https://github.com/user-attachments/assets/12c97344-91b9-47ee-8ad1-3a83d2b55591)
+
+> Agora faremos o mesmo processo no offline.sh:
 
 ![offline](https://github.com/user-attachments/assets/b062ee2e-e9b1-4d68-ae9b-837499ac4b74)
 
