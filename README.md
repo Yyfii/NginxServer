@@ -453,7 +453,7 @@ VERSION=$(cat /NginxStatus/version.txt)
 msg="Data: $(date) \nVersao: $VERSION \nServiço: Nginx \nONLINE -  Rodando perfeitamente, fique tranquile (o..o) $(whoami)"
 echo -e "$msg" >> /NginxStatus/status.log
 ```
-
+![online](https://github.com/user-attachments/assets/12c97344-91b9-47ee-8ad1-3a83d2b55591)
 > Por fim devemos editar o offline.sh, faça o mesmo processo:
 
 - Iremos adicionar após o ` #!/bin/bash`: `VERSION=$(cat /NginxStatus/version.txt)`
@@ -468,12 +468,10 @@ VERSION=$(cat /NginxStatus/version.txt)
 msg="Data: $(date) \nVersao: $VERSION \nServiço: Nginx \nOFFLINE -  Sono Profundo, ( - . -)  $(whoami)"
 echo -e "$msg" >> /NginxStatus/status.log
 ```
-
-![online](https://github.com/user-attachments/assets/12c97344-91b9-47ee-8ad1-3a83d2b55591)
-
-> Agora faremos o mesmo processo no offline.sh:
-
 ![offline](https://github.com/user-attachments/assets/b062ee2e-e9b1-4d68-ae9b-837499ac4b74)
+
+
+Agora reiniciaremos o ssh para que as informações sejam atualizadas:
 
 ![Resultado](https://github.com/user-attachments/assets/725bb2ea-6a8e-47c3-b2e7-28a907373cde)
 
