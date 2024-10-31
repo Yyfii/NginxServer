@@ -473,9 +473,25 @@ echo -e "$msg" >> /NginxStatus/status.log
 
 Agora reiniciaremos o ssh para que as informações sejam atualizadas:
 
+```
+systemctl restart ssh
+```
+
+Espere o tempo definido anteriormente, e teste o status.log: 
+
+```
+tail -f status.log
+```
+O resultado será semelhante a imagem abaixo:
 ![Resultado](https://github.com/user-attachments/assets/725bb2ea-6a8e-47c3-b2e7-28a907373cde)
 
 ***
+Se pararmos o nginx:
+
+```
+systemctl stop ssh
+```
+![stopped](https://github.com/user-attachments/assets/aa2a62ed-7eaa-4e1e-868f-201dc19669c5)
 
 Como você pode perceber, ele agora está mostrando as notificações do nginx parado. Então está funcionando perfeitamente! :relaxed:
 
