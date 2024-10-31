@@ -369,6 +369,41 @@ echo -e "$msg" >> /NginxStatus/status.log
   # Step 9: Colocando o versão do script na mensagem.
 
   > Vamos adicionar ao nosso script status.sh um código que gere a versão do script atual, e a cada vez que o script é executado, uma nova versão é criada. Exemplo: versão 1, 2 etc.
+> Então, primeiramente vamos abrir o arquivo status.sh
+```
+vi status.sh
+```
+> Depois do #!/bin/bash vamos adicionar o seguinte código:
+```
+#!/bin/bash
+
+VERSION_FILE="/NginxStatus/version.txt"
+
+if [ ! -f "$VERSION_FILE" ]; then
+            echo "1" > "$VERSION_FILE"
+fi
+
+VERSION=$(cat "$VERSION_FILE")
+
+NEW_VERSION=$((VERSION + 1))
+
+echo "$NEW_VERSION" > "$VERSION_FILE"
+
+echo "Versão atual do script: $VERSION"
+```
+`VERSION_FILE="/NginxStatus/version.txt"` : Cria uma variável "VERSION_FILE" que vai armazenar o caminho do arquivo de versão, que será criado nas próximas linhas. Nesse arquivo colocaremos o número da versão do arquivo, esse número é incrementado a cada execução.
+
+```
+if [ ! -f "$VERSION_FILE" ]; then
+            echo "1" > "$VERSION_FILE"
+fi
+```
+O código acima verifica se o arquivo contido na variável VERSION_FILE existe.
+`!` : nega algo.
+`-f`: Retorna se um arquivo existe ou não (true ou false)
+`-f "$VERSION_FILE"`: Retorna se o arquivo version.txt existe ou não.
+Então, se `[! -f "$VERSION_FILE" ]` o arquivo version.txt não existir, ele:
+` echo "1" > "$VERSION_FILE"` : coloca o texto 1 no version file, pois se ele não existir quer dizer que não foi criado e portanto, que ainda não foi executado, nesse caso essa seria aprimeira versão dele.
 
 ```
 #!/bin/bash
@@ -396,7 +431,6 @@ else
         /NginxStatus/offline.sh
 fi
 ```
-
 ![novo status](https://github.com/user-attachments/assets/977349b3-b75e-4030-8b34-451c8ad1b442)
 
 ![online](https://github.com/user-attachments/assets/12c97344-91b9-47ee-8ad1-3a83d2b55591)
