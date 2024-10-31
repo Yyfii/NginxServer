@@ -483,6 +483,7 @@ Espere o tempo definido anteriormente, e teste o status.log:
 tail -f status.log
 ```
 O resultado será semelhante a imagem abaixo:
+
 ![Resultado](https://github.com/user-attachments/assets/725bb2ea-6a8e-47c3-b2e7-28a907373cde)
 
 ***
