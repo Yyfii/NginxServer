@@ -117,7 +117,7 @@
   - offline.sh - arquivo de serviço offline.
   > Esse script será executado a cada 5 minutos, e a cada execução ele terá uma nova versão.(Ex: statusv1.sh)
   
-  `História do script`: Se o nginx aparecer quando pesquisarmos todos os serviços ativos do sistema -> ele está rodando, e iremos executar o script online.sh e mandar a execução para o arquivo de log para que possa servir como um histórico de todas as execuções. Se ele não aparecer, será executado o arquivo offline.sh e mandado a ocorrencia para o arquivo de log, o status.log.
+  - `História do script`: Se o nginx aparecer quando pesquisarmos todos os serviços ativos do sistema -> ele está rodando, e iremos executar o script online.sh e mandar a execução para o arquivo de log para que possa servir como um histórico de todas as execuções. Se ele não aparecer, será executado o arquivo offline.sh e mandado a ocorrencia para o arquivo de log, o status.log.
   
   Primeiramente iremos criar um diretorio:
   - Logue como root "su root"
@@ -156,7 +156,7 @@ $> su root
     - :q! (força a saída)
     -  :wq (salva e sai)
 >
-    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc. Estarei deixando um vídeo para auxiliar no uso do vi, na seção das [referencias](https://github.com/Yyfii/NginxServer/tree/main?tab=readme-ov-file#referencias)
+    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc. Estarei deixando um vídeo para auxiliar no uso do vi, na seção das [REFERÊNCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
 
   ``` sh
   #!/bin/bash 
