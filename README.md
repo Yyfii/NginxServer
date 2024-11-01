@@ -156,7 +156,7 @@ $> su root
     - :q! (força a saída)
     -  :wq (salva e sai)
 >
-    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc. Estarei deixando um vídeo para auxiliar no uso do vi, na seção das [REFERÊNCIAS](https://github.com/Yyfii/NginxServer/blob/main/README.md#referencias)
+    > **Detalhe**: para se mover sem problemas, clique em ESC e use as teclas de seta pra cima, baixo, etc. Estarei deixando um vídeo para auxiliar no uso do vi, na seção das [referencias](https://github.com/Yyfii/NginxServer/edit/main/README.md#step-6-criando-o-script-de-valida%C3%A7%C3%A3o)
 
   ``` sh
   #!/bin/bash 
