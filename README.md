@@ -535,6 +535,15 @@ Se por acaso algum desses passos não funcionou para você, estou deixando todos
 - ` Nginx - Está rodando - ONLINE ` : o texto a ser exibido.
 - ` >> ` : esse símbolo pega a expressao do echo e redireciona para algum lugar, como por exemplo um arquivo.
 - ` /NginxStatus/status.log ` : o arquivo de log, onde as atualizações a cada 5 min serão enviadas.
+- `!` : nega algo.
+- `-f`: Retorna se um arquivo existe ou não (true ou false)
+- `-f "$VERSION_FILE"`: Retorna se o arquivo version.txt existe ou não.
+- Então, se `[! -f "$VERSION_FILE" ]` o arquivo version.txt não existir, ele:
+- ` echo "1" > "$VERSION_FILE"` : coloca o valor ** 1 ** no version file, pois se ele não existir quer dizer que não foi criado e portanto, que ainda não foi executado, nesse caso essa seria a primeira versão dele.
+- `VERSION=$(cat "$VERSION_FILE")`: Agora ele cria uma variável chamada VERSION, e dentro dela ele armazena o resultado da execução de um comando, o cat $VERSION_FILE, que é a variável que está armazenando o arquivo que guarda o número da versão, então o que ele realmente está colocando como valor na variável VERSION é o número da versão (se for a primeira vez executando o script, seria o 1).
+- `NEW_VERSION=$((VERSION + 1))`: Aqui, ele está fazendo o incremento, ele cria uma variável NEW_VERSION que armazena o resultado da execução de um comando,`$((VERSION + 1))`, que pega o valor da versão atual e soma 1, pois toda vez que o script é executado, o número da versão muda.
+- `echo "$NEW_VERSION" > "$VERSION_FILE"`: Nesse trecho de código, estamos chamando o valor da NEW_VERSION(já incrementado, o valor da nova versão) e estamos substituindo o valor da versão no arquivo version.txt para o valor da nova versão.
+**
 # REFERENCIAS
 :pushpin: [Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
 
