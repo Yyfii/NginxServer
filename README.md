@@ -487,7 +487,7 @@ O resultado será semelhante a imagem abaixo:
 
 ![Resultado](https://github.com/user-attachments/assets/725bb2ea-6a8e-47c3-b2e7-28a907373cde)
 
-***
+
 Se pararmos o nginx:
 
 ```
@@ -501,6 +501,7 @@ Bom trabalho até aqui! :shipit:
 
 Se por acaso algum desses passos não funcionou para você, estou deixando todos os links que utilizei e que você pode utilizar seja para instalar o Ubuntu até os comandos utilizados!
 
+***
 ## DESCRIÇÃO DOS PRINCIPAIS COMANDOS
 
 - `su root`: loga como usuario root.
@@ -543,7 +544,7 @@ Se por acaso algum desses passos não funcionou para você, estou deixando todos
 - `VERSION=$(cat "$VERSION_FILE")`: Agora ele cria uma variável chamada VERSION, e dentro dela ele armazena o resultado da execução de um comando, o cat $VERSION_FILE, que é a variável que está armazenando o arquivo que guarda o número da versão, então o que ele realmente está colocando como valor na variável VERSION é o número da versão (se for a primeira vez executando o script, seria o 1).
 - `NEW_VERSION=$((VERSION + 1))`: Aqui, ele está fazendo o incremento, ele cria uma variável NEW_VERSION que armazena o resultado da execução de um comando,`$((VERSION + 1))`, que pega o valor da versão atual e soma 1, pois toda vez que o script é executado, o número da versão muda.
 - `echo "$NEW_VERSION" > "$VERSION_FILE"`: Nesse trecho de código, estamos chamando o valor da NEW_VERSION(já incrementado, o valor da nova versão) e estamos substituindo o valor da versão no arquivo version.txt para o valor da nova versão.
-**
+***
 # REFERENCIAS
 :pushpin: [Aula de VIM ou VI - Aprenda TUDO em 10 minutos! | LPIC-1](https://www.youtube.com/watch?v=Ep_uf_q3ST0)
 
