@@ -136,13 +136,13 @@ $> su root
 #> touch status.sh
 #> vi status.sh
 ```
-`su root`: loga como usuario root
-`cd`: significa change directory/mudar diretorio.
-`cd /`: entra no diretorio raiz
-`mkdir NginxStatus`: cria o diretorio/pasta NginxStatus, onde colocaremos nossos scripts.
-`cd NginxStatus`: entra no diretorio NginxStatus.
-`touch status.sh`: o touch cria um arquivo vazio, então ele está criando o arquivo status.sh
-`vi status.sh`: o vi é o editor, então ele vai abrir o arquivo status.sh com o editor de texto vi.
+- `su root`: loga como usuario root
+- `cd`: significa change directory/mudar diretorio.
+- `cd /`: entra no diretorio raiz
+- `mkdir NginxStatus`: cria o diretorio/pasta NginxStatus, onde colocaremos nossos scripts.
+- `cd NginxStatus`: entra no diretorio NginxStatus.
+- `touch status.sh`: o touch cria um arquivo vazio, então ele está criando o arquivo status.sh
+- `vi status.sh`: o vi é o editor, então ele vai abrir o arquivo status.sh com o editor de texto vi.
 
 > O editor vi funciona de modo geral em dois modos/estados: o estado de inserção e o estado de não inserção, quando você clicar em **ESC** ele entra no modo de não inserção, que é o modo emque você pode inserir comandos:
 
